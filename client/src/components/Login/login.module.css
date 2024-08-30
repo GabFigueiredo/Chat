@@ -1,0 +1,9 @@
+.span {
+    font-style: span;
+    color: #3CB8FF
+}
+
+.span:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+}

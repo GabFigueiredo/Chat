@@ -1,0 +1,65 @@
+/* App.css */
+
+.App {
+  display: flex;
+  flex-direction: row; /* Padrão de layout em linha */
+  height: 80vh; /* Ajusta a altura para ser menor que a altura total da viewport */
+  width: 80%; /* Largura menor para centralização */
+  max-width: 1200px; /* Define uma largura máxima para o contêiner */
+  margin: auto; /* Centraliza o contêiner horizontalmente e verticalmente */
+  border-radius: 10px; /* Bordas arredondadas para um visual mais elegante */
+  overflow: hidden; /* Evitar barras de rolagem externas */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra para destacar o contêiner */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos para o aside */
+aside {
+  width: 25%; /* Largura padrão para a sidebar */
+  min-width: 200px; /* Largura mínima para garantir espaço de leitura */
+  background-color: #292929; /* Cor de fundo da sidebar */
+  padding: 20px; /* Espaçamento interno */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar a sidebar */
+  overflow-y: auto; /* Rolagem para conteúdos maiores que a altura */
+}
+
+/* Estilos para o main */
+main {
+  flex-grow: 1; /* Ocupar o restante do espaço */
+  background-color: #121212; /* Cor de fundo para a área principal */
+  display: flex;
+  flex-direction: column; /* Disposição vertical para o chat e entrada de mensagem */
+  padding: 20px; /* Espaçamento interno */
+  overflow-y: auto; /* Rolagem para a área de chat */
+}
+
+/* Media Query para dispositivos menores */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column; /* Muda o layout para coluna em telas menores */
+    width: 100%; /* Largura total em dispositivos menores */
+    height: 100vh; /* Altura total da viewport em dispositivos menores */
+    margin: 0; /* Remove a margem em dispositivos menores */
+    border-radius: 0; /* Remove bordas arredondadas em dispositivos menores */
+  }
+
+  aside {
+    width: 100%; /* Sidebar ocupa a largura total */
+    height: auto; /* Ajusta a altura automaticamente */
+    display: flex;
+    flex-direction: row; /* Disposição em linha para os itens na sidebar */
+    overflow-x: auto; /* Rolagem horizontal para a sidebar */
+  }
+
+  main {
+    flex-grow: 1; /* Main continua a ocupar o restante do espaço */
+  }
+}
+
+/* Ajustes adicionais para elementos filhos */
+.Account, .Contacts, .Chat {
+  margin-bottom: 20px; /* Espaçamento entre os componentes */
+}

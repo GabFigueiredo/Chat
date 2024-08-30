@@ -1,0 +1,82 @@
+.inputContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+    height: 90px;
+    /* width: 100%; */
+    background-color: rgb(48, 48, 48);
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    padding: 20px;
+    height: 100vh; /* Altura total da tela */
+    overflow-y: auto; /* Permite rolagem vertical se necessário */
+    gap: 10px;
+  }
+  
+  .message {
+    display: flex;
+    margin: 10px 0;
+  }
+  
+  .right {
+    justify-content: flex-end;
+  }
+  
+  .left {
+    justify-content: flex-start;
+  }
+  
+  .message-content {
+    background-color: #333; /* Cor de fundo das mensagens */
+    color: #e0e0e0; /* Cor do texto */
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 60%;
+    position: relative;
+    word-wrap: break-word;
+  }
+  
+  .message-time {
+    font-size: 0.75em;
+    color: #888; /* Cor mais clara para o horário */
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+  }
+  
+  .right .message-content {
+    background-color: #4a4a4a; /* Cor de fundo diferente para o usuário */
+  }
+  
+  .left .message-content {
+    background-color: #2a2a2a; /* Cor de fundo diferente para o outro usuário */
+  }
+  
+  .message-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  
+  /* Balão */
+  .right .message-content::after {
+    border-width: 8px 0 8px 8px;
+    border-color: transparent transparent transparent #4a4a4a;
+    right: -8px;
+    top: 10px;
+  }
+  /* Balão */
+  .left .message-content::after {
+    border-width: 8px 8px 8px 0;
+    border-color: transparent #2a2a2a transparent transparent;
+    left: -8px;
+    top: 10px;
+  }
+  
