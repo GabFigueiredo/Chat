@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
 
         res.status(200).json({
             message: "Item adicionado com sucesso",
-            user: user 
+            success: true
         })
 
     } catch (error) {

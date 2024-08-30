@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     // Search if those users have an roomID/messages
     try {
         alreadyHasRoom = await mongodb.findOne({
-            participants: { $all: [currentUser.username, targetUser.username] }
+            participants: { $all: [currentUser, targetUser] }
         });
     } catch (error) {
         return res.status(400).json({
@@ -19,21 +19,21 @@ module.exports = async (req, res) => {
 
     if (alreadyHasRoom) {
         return res.status(200).json({
-            existenceRoom: alreadyHasRoom._id
+            roomID: alreadyHasRoom._id
         });
     } else {
-        const roomID = await bcrypt.hash(currentUser.username + targetUser.username, 10)
+        const roomID = await bcrypt.hash(currentUser + targetUser, 10)
         try {
             const newRoom = new mongodb({
                 _id: roomID,
-                participants: [currentUser.username, targetUser.username],
+                participants: [currentUser, targetUser],
                 messages: [],
                 createdAt: new Date(),
                 updatedAt: new Date()
             })
             await newRoom.save()
             res.status(200).json({
-                newRoom: roomID
+                roomID: roomID
             })
         } catch (error) {
             res.status(400).json({

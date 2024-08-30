@@ -5,8 +5,14 @@ const CONNECTION_URI = process.env.CONNECTION_URI
 const NODE_ENV = process.env.NODE_ENV
 
 const app = require('./server')
+const http = require('http');
 const mongoose = require('mongoose')
 const colors = require('./colors.js')
+
+const server = http.createServer(app)
+
+const initializeSocket = require('./socket/socketConfig');
+initializeSocket(server);
 
 // Connection
 function connectToDatabase() {
@@ -19,9 +25,9 @@ function connectToDatabase() {
 
 if (NODE_ENV === 'production') {
     connectToDatabase()
-    app.listen(PORT, () => {
-    console.log(colors.green + 'Server está ligado na porta 5000' + colors.end)
-})
+    server.listen(PORT, () => {
+        console.log(colors.green + 'Server está ligado na porta 5000' + colors.end)
+    })
 }
 
 module.exports = {app, connectToDatabase}

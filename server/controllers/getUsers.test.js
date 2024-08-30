@@ -10,7 +10,6 @@ describe('Get Users route', () => {
         const response = await request(app)
             .get('/getUsers')
             .set('Accept', 'application/json')
-        console.log(response.message)
         expect(response.body.data).toBeTruthy()
         expect(response.body.data).toHaveLength(databaseLength)
     })
